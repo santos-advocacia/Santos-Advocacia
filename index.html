@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Santos Advocacia Especializada</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; color: #1a1a1a; background: #fff; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: #0a1628;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { color: #c9a84c; font-size: 1rem; font-weight: bold; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #ccc; font-size: 0.9rem; }
+    .nav-links a:hover { color: #c9a84c; }
+    .nav-cta {
+      background: #c9a84c;
+      color: #0a1628;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    #inicio {
+      background: linear-gradient(135deg, #0a1628 60%, #1a2e4a);
+      color: #fff;
+      padding: 80px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text { max-width: 560px; }
+    .hero-text h1 { font-size: 2.6rem; line-height: 1.3; margin-bottom: 20px; }
+    .hero-text h1 em { color: #c9a84c; font-style: italic; }
+    .hero-text p { color: #ccc; font-size: 1rem; line-height: 1.7; margin-bottom: 28px; }
+    .hero-tags { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+    .hero-tags span {
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #c9a84c;
+      color: #0a1628;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .btn-outline {
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: #12243d;
+      border: 1px solid #c9a84c33;
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      min-width: 260px;
+      max-width: 320px;
+    }
+    .hero-card img {
+      width: 220px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-card strong { color: #fff; display: block; font-size: 1rem; margin-bottom: 4px; }
+    .hero-card span { color: #c9a84c; font-size: 0.85rem; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 24px;
+    }
+    .hero-stats div { text-align: center; }
+    .hero-stats .num { color: #c9a84c; font-size: 1.1rem; font-weight: bold; }
+    .hero-stats .label { color: #aaa; font-size: 0.75rem; }
+    .hero-contacts { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .hero-contacts a { color: #ccc; font-size: 0.8rem; }
+    .hero-contacts a:hover { color: #c9a84c; }
+
+    #sobre {
+      display: flex;
+      gap: 60px;
+      padding: 80px 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      background: #fff;
+    }
+    .sobre-img { flex: 1; min-width: 260px; }
+    .sobre-img img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      max-height: 420px;
+    }
+    .sobre-badge {
+      background: #0a1628;
+      color: #c9a84c;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      margin-top: 10px;
+    }
+    .sobre-text { flex: 1; min-width: 280px; }
+    .section-label { color: #c9a84c; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 8px; }
+    .sobre-text h2 { font-size: 1.8rem; color: #0a1628; margin-bottom: 16px; line-height: 1.3; }
+    .sobre-text p { color: #555; line-height: 1.8; margin-bottom: 20px; }
+    .sobre-text ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .sobre-text ul li { display: flex; align-items: center; gap: 10px; color: #333; font-size: 0.95rem; }
+    .sobre-text ul li::before { content: "✔"; color: #c9a84c; font-weight: bold; }
+
+    #areas { background: #f7f4ef; padding: 80px 60px; }
+    #areas h2 { text-align: center; font-size: 1.8rem; color: #0a1628; margin-bottom: 10px; }
+    #areas .section-label { text-align: center; }
+    #areas p.sub { text-align: center; color: #666; font-size: 0.95rem; margin-bottom: 40px; }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .area-card {
+      background: #fff;
+      border: 1px solid #e5ddd0;
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .area-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .area-card h3 { color: #0a1628; font-size: 1rem; margin-bottom: 8px; }
+    .area-card p { color: #666; font-size: 0.85rem; line-height: 1.6; }
+
+    #diferenciais { padding: 80px 60px; background: #fff; }
+    #diferenciais h2 { text-align: center; font-size: 1.8rem; color: #0a1628; margin-bottom: 40px; }
+    #diferenciais .section-label { text-align: center; }
+    .dif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .dif-card { border: 1px solid #e5ddd0; border-radius: 12px; padding: 24px; }
+    .dif-num { color: #c9a84c; font-size: 1.4rem; font-weight: bold; margin-bottom: 10px; }
+    .dif-card h3 { color: #0a1628; font-size: 0.95rem; margin-bottom: 6px; }
+    .dif-card p { color: #666; font-size: 0.85rem; line-height: 1.6; }
+
+    #contato { background: #0a1628; padding: 80px 60px; color: #fff; }
+    #contato h2 { font-size: 1.8rem; margin-bottom: 10px; }
+    #contato p.sub { color: #aaa; font-size: 0.95rem; margin-bottom: 40px; }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .contato-info { display: flex; flex-direction: column; gap: 18px; }
+    .contato-item strong { color: #c9a84c; font-size: 0.8rem; display: block; margin-bottom: 4px; }
+    .contato-item span, .contato-item a { color: #ccc; font-size: 0.95rem; }
+    .contato-box {
+      background: #12243d;
+      border: 1px solid #c9a84c33;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .contato-box h3 { color: #fff; margin-bottom: 10px; }
+    .contato-box p { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
+    .btn-wa {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .btn-email {
+      display: inline-block;
+      border: 1px solid #c9a84c;
+      color: #c9a84c;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+
+    footer {
+      background: #060f1e;
+      color: #aaa;
+      text-align: center;
+      padding: 32px 60px;
+      font-size: 0.82rem;
+    }
+    footer strong { color: #c9a84c; }
+
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25d366;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+      #inicio { padding: 48px 20px; }
+      #sobre, #areas, #diferenciais, #contato { padding: 48px 20px; }
+      .contato-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#inicio" class="nav-logo">
+    Santos Advocacia Especializada<br>
+    <small style="font-weight:normal;color:#aaa;">Excelência, ética e compromisso</small>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#areas">Áreas</a>
+    <a href="#diferenciais">Diferenciais</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="https://wa.me/5563992956887" class="nav-cta">Fale com um Advogado</a>
+</nav>
+
+<section id="inicio">
+  <div class="hero-text">
+    <p style="color:#c9a84c;font-size:0.85rem;letter-spacing:1px;margin-bottom:12px;">ATENDIMENTO JURÍDICO EM TODO O BRASIL</p>
+    <h1>Defendendo seus <em>direitos</em> com excelência.</h1>
+    <p>A <strong>Santos Advocacia Especializada</strong> atua com estratégia, transparência e compromisso, oferecendo assessoria jurídica em todo o território nacional em demandas extrajudiciais, judiciais e administrativas.</p>
+    <div class="hero-tags">
+      <span>Extrajudicial</span>
+      <span>Judicial</span>
+      <span>Administrativo</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/5563992956887" class="btn-primary">Fale pelo WhatsApp</a>
+      <a href="#areas" class="btn-outline">Conhecer áreas</a>
+    </div>
+  </div>
+<div class="profissional-foto">
+  <img src="JCG_70742minjpg.jpg" alt="Dr. John Henderson Miranda Santos">
+</div>
+  <div class="hero-card">
+    <img src="JCG_70742minjpg.jpg" alt="Dr. John Henderson Miranda Santos">
+    <strong>Dr. John Henderson Miranda Santos</strong>
+    <span>OAB/TO 11.690</span>
+    <div class="hero-stats">
+      <div><div class="num">Nacional</div><div class="label">Atuação em todo o Brasil</div></div>
+      <div><div class="num">Online</div><div class="label">Atendimento a distância</div></div>
+      <div><div class="num">6</div><div class="label">áreas de especialização</div></div>
+    </div>
+    <div class="hero-contacts">
+      <a href="https://wa.me/5563992956887">📞 (63) 99295-6887</a>
+      <a href="mailto:dr.john.hms@gmail.com">✉️ dr.john.hms@gmail.com</a>
+      <span style="color:#aaa;font-size:0.78rem;">📍 Taquaralto - Palmas/TO</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="sobre-img">
+    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80" alt="Ambiente profissional de escritório jurídico">
+    <div class="sobre-badge">OAB/TO 11.690</div>
+  </div>
+  <div class="sobre-text">
+    <p class="section-label">SOBRE O ESCRITÓRIO</p>
+    <h2>Atuação com foco em confiança, estratégia e resultado</h2>
+    <p>O escritório presta atendimento próximo e personalizado, com atuação extrajudicial, judicial e administrativa.</p>
+    <p class="section-label" style="margin-top:20px;">QUEM SOMOS</p>
+    <h2>Assessoria jurídica completa e comunicação clara</h2>
+    <p>A Santos Advocacia Especializada atua com seriedade e organização, buscando soluções seguras para cada demanda, sempre com atendimento humanizado e foco no melhor caminho jurídico para o cliente.</p>
+    <ul>
+      <li>Atendimento presencial e online</li>
+      <li>Análise individual e detalhada de cada caso</li>
+      <li>Comunicação clara e acompanhamento próximo</li>
+      <li>Ética e responsabilidade em todas as etapas</li>
+      <li>Atuação em todo o território nacional</li>
+    </ul>
+    <a href="https://wa.me/5563992956887" class="btn-primary" style="display:inline-block;">Agendar conversa</a>
+  </div>
+</section>
+
+<section id="areas">
+  <p class="section-label">ESPECIALIDADES</p>
+  <h2>Áreas de Atuação</h2>
+  <p class="sub">Atendimento jurídico amplo, com abordagem técnica e personalizada em cada frente.</p>
+  <div class="areas-grid">
+    <div class="area-card"><div class="icon">⚖️</div><h3>Direito Trabalhista</h3><p>Defesa dos direitos de trabalhadores e empregadores, com acompanhamento estratégico e processual.</p></div>
+    <div class="area-card"><div class="icon">🏛️</div><h3>Direito Previdenciário</h3><p>Aposentadorias, benefícios, revisões e orientação técnica para defesa de direitos previdenciários.</p></div>
+    <div class="area-card"><div class="icon">🛡️</div><h3>Direito Criminal</h3><p>Defesa técnica e acompanhamento estratégico em demandas criminais.</p></div>
+    <div class="area-card"><div class="icon">📄</div><h3>Direito Civil</h3><p>Indenizações, contratos, responsabilidade civil e soluções jurídicas seguras.</p></div>
+    <div class="area-card"><div class="icon">👨‍👩‍👧‍👦</div><h3>Direito de Família</h3><p>Separação, guarda, pensão alimentícia, convivência familiar, divórcio e outras demandas familiares.</p></div>
+    <div class="area-card"><div class="icon">🏢</div><h3>Direito Administrativo</h3><p>Demandas perante órgãos e entidades públicas, com medidas administrativas e judiciais.</p></div>
+  </div>
+</section>
+
+<section id="diferenciais">
+  <p class="section-label">POR QUE NOS ESCOLHER</p>
+  <h2>Diferenciais do escritório</h2>
+  <div class="dif-grid">
+    <div class="dif-card"><div class="dif-num">01</div><h3>Atendimento em todo o Brasil</h3><p>Presença nacional com atendimento presencial e online.</p></div>
+    <div class="dif-card"><div class="dif-num">02</div><h3>Atuação em três frentes</h3><p>Atendimento extrajudicial, judicial e administrativo, conforme a necessidade do caso.</p></div>
+    <div class="dif-card"><div class="dif-num">03</div><h3>Transparência total</h3><p>Comunicação clara e acompanhamento próximo em todas as fases.</p></div>
+    <div class="dif-card"><div class="dif-num">04</div><h3>Ética e responsabilidade</h3><p>Atuação comprometida com os mais altos padrões profissionais.</p></div>
+    <div class="dif-card"><div class="dif-num">05</div><h3>Compromisso com resultados</h3><p>Dedicação integral à defesa dos interesses do cliente.</p></div>
+    <div class="dif-card"><div class="dif-num">06</div><h3>Estratégia personalizada</h3><p>Cada caso recebe análise individual, cuidadosa e sob medida.</p></div>
+  </div>
+</section>
+
+<section id="contato">
+  <p class="section-label">CONTATO</p>
+  <h2>Entre em contato com o escritório</h2>
+  <p class="sub">Canal direto para atendimento sobre sua demanda jurídica.</p>
+  <div class="contato-grid">
+    <div class="contato-info">
+      <div class="contato-item"><strong>Advogado</strong><span>Dr. John Henderson Miranda Santos</span></div>
+      <div class="contato-item"><strong>OAB</strong><span>OAB/TO 11.690</span></div>
+      <div class="contato-item"><strong>WhatsApp</strong><a href="https://wa.me/5563992956887">(63) 99295-6887</a></div>
+      <div class="contato-item"><strong>E-mail</strong><a href="mailto:dr.john.hms@gmail.com">dr.john.hms@gmail.com</a></div>
+      <div class="contato-item"><strong>Endereço</strong><span>Taquaralto - Palmas/TO</span></div>
+      <div class="contato-item"><strong>Atuação</strong><span>Todo o Brasil</span></div>
+    </div>
+    <div class="contato-box">
+      <h3>Atendimento rápido</h3>
+      <p>Para falar diretamente com o escritório, use o WhatsApp ou envie um e-mail.</p>
+      <a href="https://wa.me/5563992956887" class="btn-wa">Abrir WhatsApp</a>
+      <a href="mailto:dr.john.hms@gmail.com" class="btn-email">Enviar e-mail</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Santos Advocacia Especializada</strong></p>
+  <p>OAB/TO 11.690 — Defendendo seus direitos com excelência, ética e compromisso.</p>
+  <br>
+  <p><strong>Santos Advocacia Especializada</strong> — OAB/TO 11.690</p>
+  <p>© 2026 — Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5563992956887" class="wa-float">💬 WhatsApp</a>
+
+</body>
+</html>
